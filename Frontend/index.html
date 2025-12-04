@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medical Appointment System</title>
+    <style>
+        /* Global Styles */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Martian+Mono:wght@100..800&display=swap');
+@font-face {
+    font-family: aeonik;
+    src: url(AeonikProTRIAL-Bold.otf);
+}
+@font-face {
+    font-family: nike;
+    src: url(HelveticaNowText-Black.otf);
+}
+@font-face {
+    font-family: editor;
+    src:url(PPEditorialNew-Italic-BF644b214fb0c0a.otf) ;
+}
+@font-face {
+    font-family: tym;
+    src: url(SilkaMono-Regular.otf);
+}
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Arial', sans-serif;
+            background: #000; /* Black background */
+            color: #fff; /* White text */
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Animated Background Circles */
+        .background-circles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+        .circle {
+            position: absolute;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1), transparent);
+            animation: moveCircles 10s infinite linear;
+        }
+        .circle:nth-child(1) {
+            width: 200px;
+            height: 200px;
+            top: 10%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+        .circle:nth-child(2) {
+            width: 150px;
+            height: 150px;
+            top: 50%;
+            left: 70%;
+            animation-delay: 2s;
+        }
+        .circle:nth-child(3) {
+            width: 100px;
+            height: 100px;
+            top: 80%;
+            left: 20%;
+            animation-delay: 4s;
+        }
+        .circle:nth-child(4) {
+            width: 250px;
+            height: 250px;
+            top: 30%;
+            left: 50%;
+            animation-delay: 6s;
+        }
+        @keyframes moveCircles {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            25% { transform: translate(100px, -50px) rotate(90deg); }
+            50% { transform: translate(-50px, 100px) rotate(180deg); }
+            75% { transform: translate(50px, -100px) rotate(270deg); }
+            100% { transform: translate(0, 0) rotate(360deg); }
+        }
+
+        /* Navbar */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 20;
+            backdrop-filter: blur(10px); /* Glass effect */
+            background: rgba(255, 255, 255, 0.1);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            font-family: poppins;
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        nav ul a {
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        nav ul li a:hover {
+            color: #1877F2; /* Facebook blue */
+        }
+        .auth-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+        .btn {
+            background: #1877F2;
+            color: #fff;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .btn:hover {
+            background: #165eab;
+        }
+
+        /* Main Section */
+        main {
+            margin-top: 80px; /* Account for fixed navbar */
+            display: flex;
+            min-height: 80vh;
+            align-items: center;
+        }
+        .image-section {
+            flex: 1;
+            padding: 2rem;
+        }
+        .image-section img {
+            width:100%;
+            height: auto;
+            border-radius: 10px;
+        }
+        .text-section {
+            flex: 1;
+            padding: 2rem;
+            text-align: left;
+        }
+        .text-section h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            font-family: poppins;
+        }
+        .text-section p {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+            font-family: tym;
+            color:gainsboro;
+        }
+        .book-btn {
+            background: #1877F2;
+            color: #fff;
+            border: none;
+            padding: 1rem 2rem;
+            font-size: 1.2rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.3s;
+        }
+        .book-btn:hover {
+            background: #165eab;
+            transform: scale(1.05);
+        }
+
+        /* Cards Section */
+        .cards-section {
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+        .cards {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+        .card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            padding: 2rem;
+            width: 250px;
+            transition: transform 0.3s;
+        }
+        .card:hover {
+            transform: translateY(-10px);
+        }
+        .card p {
+            margin-bottom: 1rem;
+            color:grey;
+            font-family: Inter;
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            text-align: center;
+            padding: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            font-family:Martian Mono;
+            font-size: 100;
+            font-size: .5vw;
+        }
+  a{
+            text-decoration: none;
+        }
+        /* Responsive */
+        @media (max-width: 768px) {
+            main {
+                flex-direction: column;
+            }
+            .cards {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="background-circles">
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+    </div>
+
+    <!-- Header/Navbar -->
+    <header>
+        <nav>
+            <div class="logo">MediApp</div>
+            <ul>
+                <a href="#"><li>Home</li></a>
+                <a href="contact.html"><li>Contact Us</li></a>
+                <a href="aboutus.html"><li>About Us</li></a>
+            </ul>
+            <div class="auth-buttons">
+                <a href="login.html"><button class="btn">Login</button></a>
+               <a href="signup.html"> <button class="btn">Sign Up</button></a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Section -->
+    <main>
+        <div class="image-section">
+            <img src="https://plus.unsplash.com/premium_photo-1681843126728-04eab730febe?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Medical Appointment Image">
+        </div>
+        <div class="text-section">
+            <h1>Your Health, Our Priority</h1>
+            <p>Experience seamless healthcare at your fingertips. Book appointments with top-rated doctors, manage your medical records, and take control of your wellness journey. Because your health deserves nothing less than excellence.</p>
+           <a href="login.html"> <button class="book-btn">Book Appointment</button></a>
+        </div>
+    </main>
+
+    <!-- Cards Section -->
+    <section class="cards-section">
+        <div class="cards">
+            <div class="card">
+                <img src="alarm_on_80dp_4B77D1_FILL0_wght400_GRAD0_opsz48.svg">
+                <p>Instant appointments</p>
+            </div>
+            <div class="card">
+                <img src="health_and_safety_80dp_4B77D1_FILL0_wght400_GRAD0_opsz48.svg">
+                <p>Protected data</p>
+            </div>
+            <div class="card">
+                <img src="star_80dp_4B77D1_FILL0_wght400_GRAD0_opsz48.svg">
+                <p>Verified professionals</p>
+            </div>
+            <div class="card">
+                <img src="star_80dp_4B77D1_FILL0_wght400_GRAD0_opsz48.svg">
+                <p>Always available</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2023 MediApp. All rights reserved. | Address: 123 Health St, Wellness City, WC 12345</p>
+    </footer>
+
+    <script>
+        // JavaScript for basic interactivity (e.g., button click alert)
+        document.querySelector('.book-btn').addEventListener('click', function() {
+            alert('Redirecting to booking page...');
+        });
+
+        // Smooth scroll for navbar links (if needed for internal sections)
+        document.querySelectorAll('nav ul li a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

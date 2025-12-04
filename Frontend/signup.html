@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - MediApp</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> <!-- For icons -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Martian+Mono:wght@100..800&display=swap');
+@font-face {
+    font-family: aeonik;
+    src: url(AeonikProTRIAL-Bold.otf);
+}
+@font-face {
+    font-family: nike;
+    src: url(HelveticaNowText-Black.otf);
+}
+@font-face {
+    font-family: editor;
+    src:url(PPEditorialNew-Italic-BF644b214fb0c0a.otf) ;
+}
+@font-face {
+    font-family: tym;
+    src: url(SilkaMono-Regular.otf);
+}
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Arial', sans-serif;
+            background: #000; /* Black background */
+            color: #fff; /* White text */
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Animated Background Circles (Blue Gradient with Noise) */
+        .background-circles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+        .circle {
+            position: absolute;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(24, 119, 242, 0.3), rgba(24, 119, 242, 0.1), transparent);
+            filter: blur(20px); /* Blur for noise effect */
+            animation: moveCircles 12s infinite linear;
+        }
+        .circle:nth-child(1) {
+            width: 300px;
+            height: 300px;
+            top: 10%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+        .circle:nth-child(2) {
+            width: 200px;
+            height: 200px;
+            top: 50%;
+            left: 70%;
+            animation-delay: 3s;
+        }
+        .circle:nth-child(3) {
+            width: 150px;
+            height: 150px;
+            top: 80%;
+            left: 20%;
+            animation-delay: 6s;
+        }
+        .circle:nth-child(4) {
+            width: 250px;
+            height: 250px;
+            top: 30%;
+            left: 50%;
+            animation-delay: 9s;
+        }
+        @keyframes moveCircles {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            25% { transform: translate(150px, -75px) rotate(90deg); }
+            50% { transform: translate(-75px, 150px) rotate(180deg); }
+            75% { transform: translate(75px, -150px) rotate(270deg); }
+            100% { transform: translate(0, 0) rotate(360deg); }
+        }
+
+        /* Navbar */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 10;
+            backdrop-filter: blur(10px); /* Glass effect */
+            background: rgba(255, 255, 255, 0.1);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+             font-family: poppins;
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        nav ul a {
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        nav ul li a:hover {
+            color: #1877F2; /* Facebook blue */
+        }
+        .auth-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+        .btn {
+            background: #1877F2;
+            color: #fff;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.3s;
+        }
+        .btn:hover {
+            background: #165eab;
+            transform: scale(1.05);
+        }
+
+        /* Main Content */
+        main {
+            margin-top: 80px; /* Account for fixed navbar */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: calc(100vh - 160px); /* Adjust for header and footer */
+        }
+
+        /* Register Form Section */
+        .register-section {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px); /* Enhanced glass effect */
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 15px;
+            padding: 3rem;
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+            box-shadow: 0 8px 32px rgba(24, 119, 242, 0.2);
+            animation: fadeInUp 1s ease-out;
+        }
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .register-section h2 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            color: #fff;
+        }
+        .register-section p {
+            font-size: 1rem;
+            margin-bottom: 2rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+        .form-group {
+            margin-bottom: 1.5rem;
+            text-align: left;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+            color: #fff;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            font-size: 1rem;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+        .form-group input::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+        .form-group input:focus {
+            border-color: #1877F2;
+            box-shadow: 0 0 10px rgba(24, 119, 242, 0.5);
+            outline: none;
+        }
+        .agreement {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+        .agreement input[type="checkbox"] {
+            margin-right: 0.5rem;
+        }
+        .agreement a {
+            color: #1877F2;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .agreement a:hover {
+            color: #165eab;
+        }
+        .create-account-btn {
+            background: #1877F2;
+            color: #fff;
+            border: none;
+            padding: 1rem;
+            font-size: 1.1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            width: 100%;
+            transition: background 0.3s, transform 0.3s, box-shadow 0.3s;
+        }
+        .create-account-btn:hover {
+            background: #165eab;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(24, 119, 242, 0.4);
+        }
+        .sign-in-link {
+            margin-top: 1.5rem;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+        .sign-in-link a {
+            color: #1877F2;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .sign-in-link a:hover {
+            color: #165eab;
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            text-align: center;
+            padding: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+              font-family:Martian Mono;
+            font-size: 100;
+            font-size: .5vw;
+        }
+        a {
+            text-decoration: none;
+        }
+        /* Responsive */
+        @media (max-width: 768px) {
+            .register-section {
+                padding: 2rem;
+                margin: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="background-circles">
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+    </div>
+
+    <!-- Header/Navbar -->
+    <header>
+        <nav>
+            <div class="logo">MediApp</div>
+            <ul>
+                <a href="index.html"><li>Home</li></a>
+                <a href="contact.html"><li>Contact Us</li></a>
+                <a href="aboutus.html"><li>About Us</li></a>
+            </ul>
+            <div class="auth-buttons">
+                <a href="login.html"><button class="btn">Login</button></a>
+                <a href="signup.html"><button class="btn">Sign Up</button></a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Register Form Section -->
+        <section class="register-section">
+            <h2>Create Account</h2>
+            <p>Join us for better healthcare</p>
+            <form id="registerForm">
+                <div class="form-group">
+                    <label for="fullName">Full Name</label>
+                    <input type="text" id="fullName" name="fullName" placeholder="Enter your full name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" placeholder="Create a password" required>
+                </div>
+                <div class="form-group">
+                    <label for="confirmPassword">Confirm Password</label>
+                    <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm your password" required>
+                </div>
+                <div class="agreement">
+                    <input type="checkbox" id="agree" name="agree" required>
+                    <label for="agree">I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a></label>
+                </div>
+                <button type="submit" class="create-account-btn">Create Account</button>
+            </form>
+            <div class="sign-in-link">
+                Already have an account? <a href="#">Sign In</a>
+            </div>
+        </section>
+    </main>
+    <br><br><br>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2023 MediApp. All rights reserved. | Address: 123 Health St, Wellness City, WC 12345</p>
+    </footer>
+
+    <script>
+        // Simple form validation and submission (for demo purposes)
+        document.getElementById('registerForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            alert('Account created successfully!');
+            // In a real app, you'd register the user here
+        });
+    </script>
+</body>
+</html>
