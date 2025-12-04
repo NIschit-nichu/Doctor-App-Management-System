@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+
+    <title>Document</title>
+    <style>
+        /* ---------------------------------------------------- */
+        /* GLOBAL & BASE STYLES */
+        /* ---------------------------------------------------- */
+        body {
+            /* Set a professional dark background */
+            background-color: #121212;
+            color: #f0f0f0;
+            /* Ensure padding is only on body for fixed nav clearance */
+            padding-top: 80px;
+        }
+
+        /* Reset unnecessary padding on the paragraph */
+        p {
+            padding-top: 0;
+        }
+
+        h1,
+        h5 {
+            color: #0dcaf0;
+            /* Using light blue (#0dcaf0) */
+        }
+
+        /* Doctor Card Hover (Changed the yellow shadow to blue shadow) */
+        .m:hover {
+            transform: translateY(-8px) scale(1.02);
+            /* Changed yellow warning shadow to light blue info shadow */
+            box-shadow: 0 15px 40px rgba(13, 202, 240, 0.4);
+        }
+
+        .li:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            /* Subtle white glow on hover */
+            border-radius: 8px;
+            /* Ensure rounded corners are consistent */
+            transition: background-color 300ms ease;
+        }
+
+        /* Doctor Card Hover (Smoother transition) */
+        .m {
+            transition: transform 400ms ease-out, box-shadow 400ms ease-out;
+            /* Premium transition timing */
+        }
+
+
+
+        /* ---------------------------------------------------- */
+        /* GLASS STYLES (Refined) */
+        /* ---------------------------------------------------- */
+
+        /* Card Text Background (Inner Glass) - Used in card-text */
+        .glass-card-inner {
+            /* Made the inner glass distinct and slightly darker for better contrast */
+            background-color: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 10px;
+            margin-top: 10px;
+        }
+
+        /* Doctor Card Container Glass (Frosted Look) - Used in card */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.08);
+            /* Lower opacity white */
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+            /* Cleaner, subtle shadow */
+            border-radius: 15px;
+            color: #f0f0f0;
+            height: 100%;
+            /* Ensure all cards have equal height */
+        }
+
+        /* Navbar Glass (Real Glass Look) - Used in navbar */
+        .glass-navbar {
+            background-color: rgba(0, 0, 0, 0.45);
+            /* Darker tint for nav */
+            backdrop-filter: blur(25px) saturate(150%);
+            -webkit-backdrop-filter: blur(25px) saturate(150%);
+            border: none;
+            /* Removed default border */
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            /* Removed the complex box-shadow layers and gradient from the nav for a cleaner, Apple-like fixed bar */
+        }
+
+        /* Image Styling */
+        img {
+            height: 250px;
+            /* Slightly taller image */
+            object-fit: cover;
+            /* Ensures image covers the area nicely */
+            border-top-left-radius: 15px;
+            border-top-right-radius: 15px;
+        }
+
+        /* Doctor Header Banner */
+        .doctor-banner {
+            /* Removed background-url from style attribute and used class for proper CSS */
+            background-image: url(https://aighospitals.com/uploads/images/banner/Doctor-Profile.jpg);
+            background-size: cover;
+            background-position: center;
+            text-align: center;
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 40px;
+            border-radius: 15px;
+            overflow: hidden;
+            /* Important for clean corners */
+            position: relative;
+        }
+
+        .doctor-banner h1 {
+            z-index: 2;
+            color: #fff;
+            text-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+        }
+
+        /* Optional: Dark overlay on the banner image for text visibility */
+        .doctor-banner::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.4);
+            z-index: 1;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="header">
+        <nav class="navbar glass-navbar navbar-expand-xl fixed-top align-items-center rounded-5 gp">
+            <div class="container-fluid container-xl position-relative">
+
+                <a class="navbar-brand H1 text-primary" href="homespace.html" style="font-family: cursive;">Strategy</a>
+                <button class="navbar-toggler bg-warning" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse justify-content-center collapse" id="navbarNavDropdown">
+                    <ul class="navbar-nav">
+                        <li class="nav-item rounded-5 li">
+                            <a class="gh nav-link text-light" aria-current="page" href="#tui">Home</a>
+                        </li>
+                        <li class="nav-item li rounded-pill">
+                            <a class="gh nav-link text-light" href="#about">About us</a>
+                        </li>
+                        <li class="nav-item rounded-5 li">
+                            <a class="gh nav-link text-light" href="#services">Services</a>
+                        </li>
+
+                        <li class="nav-item dropdown rounded-5 li">
+                            <a class="gh nav-link dropdown-toggle text-light" href="#" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                Dropdown link
+                            </a>
+                            <ul class="dropdown-menu rounded-5 li">
+                                <li><a class="dropdown-item" href="#">Action</a></li>
+                                <li><a class="dropdown-item" href="#">Another action</a></li>
+                                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item rounded-5 li">
+                            <a class="gh nav-link text-light" href="#contact">Contact</a>
+                        </li>
+                    </ul>
+                </div>
+                <span class="badge rounded-pill text-bg-primary d-none d-xl-block li">
+                    <a class="nav-link text-dark" href="#">
+                        <h5>Book Appointment</h5>
+                    </a>
+                </span>
+
+            </div>
+        </nav>
+    </header>
+
+
+    <main class="main container">
+        <section class="row py-5">
+            <div class="col-sm-12 col-md-6 d-flex flex-column justify-content-center">
+                <h1 class="text-center" style="text-decoration: underline;">About Us</h1>
+            </div>
+            <div class="col-sm-12 col-md-6 d-flex align-items-center">
+                <p class="text-center">
+                    Top-class medical consultants represent the pinnacle of expertise and experience within the
+                    healthcare domain, often specializing in fields like neurosurgery, cardiology, oncology, or advanced
+                    internal medicine. These doctors are distinguished by their exceptional diagnostic acumen, honed
+                    through years of practice and often groundbreaking research, enabling them to tackle the most
+                    complex and rare medical cases that baffle general practitioners.
+                </p>
+            </div>
+        </section>
+
+        <div class="doctor-banner">
+            <h1>Our Doctors</h1>
+        </div>
+
+        <section class="row row-cols-lg-3 row-cols-md-2 row-cols-1 g-4 py-5">
+
+            <div class="col d-flex">
+                <div class="card glass-card m flex-fill">
+                    <img src="https://aighospitals.com/uploads/images/staff/d383fa9df0f7b465fbbaadd7ef47c2c6.png"
+                        class="card-img-top" alt="Dr. G. V. Rao">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title text-warning">Dr. G. V. Rao</h5>
+                        <p class="card-text glass-card-inner flex-grow-1">
+                            <b>Chief of Surgical Gastroenterology & Minimally Invasive Surgery</b>
+                            <br>Surgical Gastroenterology
+                        </p>
+                        <a href="#" class="btn btn-primary mt-3">View Profile</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col d-flex">
+                <div class="card glass-card m flex-fill">
+                    <img src="https://aighospitals.com/uploads/images/staff/f52dadb3d433fb97c43c2010bb076a55.png"
+                        class="card-img-top" alt="Dr. D Nageshwar Reddy">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title text-warning">Dr. D Nageshwar Reddy</h5>
+                        <p class="card-text glass-card-inner flex-grow-1">
+                            <b> Chairman & Chief of Gastroenterology</b>
+                            <br> Medical Gastroenterology
+                        </p>
+                        <a href="#" class="btn btn-primary mt-3">View Profile</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col d-flex">
+                <div class="card glass-card m flex-fill">
+                    <img src="https://aighospitals.com/uploads/images/staff/6a2fbb3f62ca0083d3d0f1f867d87b81.jpg"
+                        class="card-img-top" alt="Dr. P Nagaraja Rao">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title text-warning">Dr. P Nagaraja Rao</h5>
+                        <p class="card-text glass-card-inner flex-grow-1">
+                            <b>Professor Emeritus - Institute of liver sciences</b>
+                            <br> Multiorgan Transplants
+                        </p>
+                        <a href="#" class="btn btn-primary mt-3">View Profile</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col d-flex">
+                <div class="card glass-card m flex-fill">
+                    <img src="https://aighospitals.com/uploads/images/staff/02a9b0e624050581a1c4903a9444ced8.jpg"
+                        class="card-img-top" alt="Dr. P. Balachandran Menon">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title text-warning">Dr. P. Balachandran Menon</h5>
+                        <p class="card-text glass-card-inner flex-grow-1">
+                            <b>Director Liver Transplant</b>
+                            <br>Liver Transplant
+                        </p>
+                        <a href="#" class="btn btn-primary mt-3">View Profile</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col d-flex">
+                <div class="card glass-card m flex-fill">
+                    <img src="https://aighospitals.com/uploads/images/staff/fc89cc79fed31ae7fc53a5dd1aece506.jpg"
+                        class="card-img-top" alt="Dr. Mohan Ramchandani">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title text-warning">Dr. Mohan Ramchandani</h5>
+                        <p class="card-text glass-card-inner flex-grow-1">
+                            <b> Director of Interventional Endoscopy</b>
+                            <br>Medical Gastroenterology
+                        </p>
+                        <a href="#" class="btn btn-primary mt-3">View Profile</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col d-flex">
+                <div class="card glass-card m flex-fill">
+                    <img src="https://aighospitals.com/uploads/images/staff/cd2f45b901c8adaf19585004010b2957.png"
+                        class="card-img-top" alt="Dr. Naveen Reddy Podduturi">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title text-warning">Dr. Naveen Reddy Podduturi</h5>
+                        <p class="card-text glass-card-inner flex-grow-1">
+                            <b>Medical Director, AIG Hospitals - HOD Internal Medicine</b>
+                            <br> Internal Medicine
+                        </p>
+                        <a href="#" class="btn btn-primary mt-3">View Profile</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+    </main>
+
+
+
+    <footer class="footer bg-dark text-center py-4 mt-5">
+        <p class="mb-0 text-secondary">© 2025 Strategy | All Rights Reserved.</p>
+    </footer>
+
+
+</body>
+
+
+
+</html>
